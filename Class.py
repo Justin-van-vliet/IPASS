@@ -12,7 +12,7 @@ def Class(player_STR, player_INT, choose, player_DEX, player_HP, player):
                   'INT = 3\n'
                   'DEX = 4\n'
                   'HP = 125\n')
-            player_stats.player = 'warrior'
+            player_stats.Player_Class = 'warrior'
             player_stats.player_STR += 10
             player_stats.player_INT += 3
             player_stats.player_DEX += 4
@@ -22,7 +22,7 @@ def Class(player_STR, player_INT, choose, player_DEX, player_HP, player):
                   'STR = 2\n'
                   'INT = 15\n'
                   'DEX = 6\n')
-            player_stats.player = 'mage'
+            player_stats.Player_Class = 'mage'
             player_stats.player_STR += 2
             player_stats.player_INT += 10
             player_stats.player_DEX += 6
@@ -31,7 +31,7 @@ def Class(player_STR, player_INT, choose, player_DEX, player_HP, player):
                   'STR = 4\n'
                   'INT = 5\n'
                   'DEX = 9\n')
-            player_stats.player = 'rogue'
+            player_stats.Player_Class = 'rogue'
             player_stats.player_STR += 4
             player_stats.player_INT += 5
             player_stats.player_DEX += 9
@@ -42,14 +42,14 @@ def Class(player_STR, player_INT, choose, player_DEX, player_HP, player):
                   'dex = 100\n'
                   'HP = 10000\n '
                   'FP = 10000\n')
-            player_stats.player = 'god of death'
+            player_stats.Player_Class = 'god of death'
             player_stats.player_STR += 100
             player_stats.player_INT += 100
             player_stats.player_DEX += 100
             player_stats.player_HP += 9900
         sure = str(input('are you sure? Y/N '))
         if sure == str('Y'):
-            print(f'youre class is now {player_stats.player}\n')
+            print(f'youre class is now {player_stats.Player_Class}\n')
             print(f'STR: {player_stats.player_STR} INT: {player_stats.player_INT} DEX: {player_stats.player_DEX} HP: {player_stats.player_HP} ')
         elif sure == str('N'):
             player_stats.player_STR = 0

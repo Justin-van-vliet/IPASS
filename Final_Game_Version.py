@@ -1,18 +1,8 @@
 import random
-
-import Bandit
 import player_stats
 import pygame
 from Class import Class
-from Slime import enemy_slime
-from Lizerdman import enemy_lizardman
-from Bandit import enemy_bandit
-from Revenant import enemy_revenant
-from Hellhound import enemy_hellhound
-from mothman import enemy_mothman
-from fenrir import boss_fenrir
-from Golem import boss_golem
-from Hydra import boss_hydra
+import awesome_2
 from AI_vs_AI import *
 from tkinter import *
 
@@ -23,7 +13,7 @@ pygame.init()
 def story_flux(enemy,player_HP):
     print(''
           'you are the chosen one, you must face evil and defeat it. now awaken! you hear as you wake up\n'
-          f'you dont know where you are or who you are all you can figure out is that you are a {player_stats.player} based on youre clothing.\n'
+          f'you dont know where you are or who you are all you can figure out is that you are a {player_stats.Player_Class} based on youre clothing.\n'
           f'you look around and you appear to be n a field full of grass undeneath a blood red moon in the distance you see a village so u decide to ask around there.\n'
           f'u arrive at the village and ask where you are and what is going on with the unusual red moon in the sky.\n'
           f'the answer that you are in Satus and that a cult called sanguis lunae ruber is trying too summon there evil lord with some kind of ritual\n '
@@ -37,7 +27,8 @@ def story_flux(enemy,player_HP):
           f'and block wins from attack\n'
           f'')
     player_stats.enemy = 'slime'
-    enemy_slime(player_FP,player_HP)
+    player_stats.enemy_HP = 10
+    awesome_2.awesome()
     print(' \n'
           'now that you defeated the slime you set of on youre adventure to stop sanguis lunae ruber\n'
           '')
@@ -46,6 +37,7 @@ def story_flux(enemy,player_HP):
         storys = random.choice(player_stats.storylist)
         if storys == 1:
             player_stats.enemy = 'bandit'
+            player_stats.enemy_HP = 50
             player_stats.storylist.remove(1)
             nexus += 1
             print(''
@@ -58,19 +50,21 @@ def story_flux(enemy,player_HP):
             else:
                 print('but you dont know from where so you dicide to wait for them to attack you.\n'
                       '\n')
-            enemy_bandit(player_FP,player_HP)
+            awesome_2.awesome()
             player_stats.player_STR -=10
         elif storys == 2:
             player_stats.enemy = 'lizardman'
+            player_stats.enemy_HP = 75
             player_stats.storylist.remove(2)
             nexus += 1
             print(''
                   'while trekking through a marsh you are suddenly spottedd by a lizardman\n'
                   'there is noway out of this you have to fight.\n'
                   '\n')
-            enemy_lizardman(player_FP,player_HP)
+            awesome_2.awesome()
         elif storys == 3:
             player_stats.enemy = 'revenant'
+            player_stats.enemy_HP = 30
             player_stats.storylist.remove(3)
             nexus += 1
             print(''
@@ -81,31 +75,33 @@ def story_flux(enemy,player_HP):
                 print('fortunatly you are able to sneak by most of them. \n'
                       'still one revenant spotted you and engaged in combat.\n'
                       '\n')
-                enemy_revenant(player_FP,player_HP)
+                awesome_2.awesome()
             else:
                 print('unfortunatly you are spotted by three of them and you have to engage in combat\n'
                       '\n')
-                enemy_revenant(player_FP, player_HP)
-                enemy_revenant(player_FP, player_HP)
-                enemy_revenant(player_FP, player_HP)
+                awesome_2.awesome()
+                awesome_2.awesome()
+                awesome_2.awesome()
         elif storys == 4:
             player_stats.enemy = 'hellhound'
+            player_stats.enemy_HP = 66.6
             player_stats.storylist.remove(4)
             nexus += 1
             print('\n'
                   'will passing trough a large field full of tall grass you encounter a hellhound snarling at you\n'
                   'you try not to provoke it and go around, but the hellhound is out for blood an started attacking\n'
                   '')
-            enemy_hellhound(player_FP,player_HP)
+            awesome_2.awesome()
         elif storys == 5:
             player_stats.enemy = 'mothman'
+            player_stats.enemy_HP = 55
             player_stats.storylist.remove(5)
             nexus += 1
             print('\n'
                   'while hiking around a mountian you a suddenly attack from a far fortunatly you are able to dodge it\n'
                   'you look around you to find the attacker and spot a mothman. youu decide to teach this adversary not to mess with you\n'
                   '\n')
-            enemy_mothman(player_FP,player_HP)
+            awesome_2.awesome()
     if nexus == 3:
         bosslist = ['golem', 'fenrir', 'hydra']
         boss = random.choice(bosslist)
@@ -119,21 +115,24 @@ def story_flux(enemy,player_HP):
               f'\n')
         if boss == 'fenrir':
             print('')
-            boss_fenrir(player_FP, player_HP)
+            player_stats.enemy_HP -= 120
+            awesome_2.awesome()
             if player_stats.player_HP > 0:
                 print(f'you defeated the {boss} and stop the cult. the moon turns back to normal and you saved the world\n'
                       f'you hev finished the game!\n'
                       f'thank you for playing\n')
         elif boss == 'hydra':
             print('')
-            boss_hydra(player_FP, player_HP)
+            player_stats.enemy_HP -= 150
+            awesome_2.awesome()
             if player_stats.player_HP > 0:
                 print(f'you defeated the {boss} and stop the cult. the moon turns back to normal and you saved the world\n'
                       f'you hev finished the game!\n'
                       f'thank you for playing\n')
         elif boss == 'golem':
             print('')
-            boss_golem(player_FP, player_HP)
+            player_stats.enemy_HP -= 200
+            awesome_2.awesome()
             if player_stats.player_HP > 0:
                 print(f'you defeated the {boss} and stop the cult. the moon turns back to normal and you saved the world\n'
                       f'you hev finished the game!\n'
@@ -148,6 +147,7 @@ def story(player_STR,player_INT,player_DEX,player_HP,player,choose,enemy):
         return
 
 def ai_vs_ai():
+    root.destroy()
     fighter(choose, player_STR, player_INT, player_DEX, player_HP, player_FP, player, Shadow, shadow_STR,shadow_INT,
             shadow_DEX, shadow_HP, shadow_FP, shadow_class)
     battlebots(player_HP,shadow_HP)

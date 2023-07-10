@@ -30,8 +30,8 @@ def enemy_slime(player_FP, player_HP):
                     player_stats.PPA_dodge = player_stats.PPA.count('dodge')
                     player_stats.PPA_magic = player_stats.PPA.count('magic')
                     if player_stats.PPA_attack <= 1 and player_stats.PPA_magic <= 1 and player_stats.PPA_dodge <= 1 and player_stats.PPA_block <= 1:
-                        enemy_action = random.choice(actionlist)
-                        if enemy_action == 'block':
+                        AI_action = random.choice(actionlist)
+                        if AI_action == 'block':
                             if player_action == 'attack':
                                 damagelist_slime = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                                 damage = random.choice(damagelist_slime)
@@ -52,7 +52,7 @@ def enemy_slime(player_FP, player_HP):
                                 print('you dodged, but the slime blocked and so 0 points of damage to both.')
                             if player_action == 'block':
                                 print('both you and the slime blocked')
-                        if enemy_action == 'attack':
+                        if AI_action == 'attack':
                             if player_action == 'attack':
                                 damagelist_slime = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                                 damage = random.choice(damagelist_slime)
@@ -102,7 +102,7 @@ def enemy_slime(player_FP, player_HP):
                                           f'you did {player_damage} points of damage\n'
                                           f'slime has {enemy_HP - player_damage} left\n')
                                     enemy_HP -= player_damage
-                        if enemy_action == 'magic':
+                        if AI_action == 'magic':
                             if player_action == 'attack':
                                 damagelist_slime = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                                 damage = random.choice(damagelist_slime)
@@ -144,7 +144,7 @@ def enemy_slime(player_FP, player_HP):
                                       f'you have {player_HP - damage} left')
                                 enemy_HP -= player_damage
                                 player_stats.player_HP -= damage
-                        if enemy_action == 'dodge':
+                        if AI_action == 'dodge':
                             if player_action == 'attack':
                                 multiplier = float(player_stats.player_STR * 0.01) + 1
                                 damagelist_player = range(5, 40)
@@ -166,8 +166,8 @@ def enemy_slime(player_FP, player_HP):
                                 player_stats.player_HP -= damage
                     else:
                         if player_stats.PPA_attack >= 2:
-                            enemy_action = 'block'
-                            if enemy_action == 'block':
+                            AI_action = 'block'
+                            if AI_action == 'block':
                                 if player_action == 'attack':
                                     damagelist_slime = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                                     damage = random.choice(damagelist_slime)
@@ -188,8 +188,8 @@ def enemy_slime(player_FP, player_HP):
                                 if player_action == 'block':
                                     print('both you and the slime blocked')
                         if player_stats.PPA_dodge >= 2:
-                            enemy_action = 'attack'
-                            if enemy_action == 'attack':
+                            AI_action = 'attack'
+                            if AI_action == 'attack':
                                 if player_action == 'attack':
                                     damagelist_slime = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                                     damage = random.choice(damagelist_slime)
@@ -241,8 +241,8 @@ def enemy_slime(player_FP, player_HP):
                                               f'slime has {enemy_HP - player_damage} left\n')
                                         enemy_HP -= player_damage
                         if player_stats.PPA_block >= 2:
-                            enemy_action = 'magic'
-                            if enemy_action == 'magic':
+                            AI_action = 'magic'
+                            if AI_action == 'magic':
                                 if player_action == 'attack':
                                     damagelist_slime = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                                     damage = random.choice(damagelist_slime)
@@ -285,8 +285,8 @@ def enemy_slime(player_FP, player_HP):
                                     enemy_HP -= player_damage
                                     player_stats.player_HP -= damage
                         if player_stats.PPA_magic >= 2:
-                            enemy_action = 'dodge'
-                            if enemy_action == 'dodge':
+                            AI_action = 'dodge'
+                            if AI_action == 'dodge':
                                 if player_action == 'attack':
                                     multiplier = float(player_stats.player_STR * 0.01) + 1
                                     damagelist_player = range(5, 40)
